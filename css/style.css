@@ -30,6 +30,20 @@
   --font-medium: 500;
   --font-semi-bold: 600;
 }
+
+/* Responsive typography */
+@media screen and (min-width: 968px) {
+  :root {
+    --big-font-size: 3.5rem;
+    --h1-font-size: 2.25rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: 0.875rem;
+    --smaller-font-size: 0.813rem;
+  }
+}
+
 /*======== Reset Style ========*/
 * {
   box-sizing: border-box;
@@ -47,6 +61,7 @@ button,
 input,
 textarea {
   font-family: var(--body-font);
+  font-size: var(--normal-font-size);
 }
 
 body {
@@ -88,12 +103,34 @@ img {
   height: auto;
   _overflow: hidden;
 }
+section {
+  padding: 8rem 0 1rem;
+}
+
+/* .section-title {
+  font-size: var(--h1-font-size);
+  font-weight: var(--font-semi-bold);
+  color: var(--title-color);
+} */
 
 .container {
   width: 100%;
   height: auto;
   margin: auto;
   max-width: 1024px;
+}
+
+.button {
+  background-color: var(--first-color);
+  color: #fff;
+  font-size: var(--h3-font-size);
+  width: fit-content;
+  padding: 0.75rem 1.563rem;
+  border-radius: 0.5rem;
+  margin-top: 1.563rem;
+  display: flex;
+  column-gap: 0.5rem;
+  align-items: center;
 }
 
 /* 배경색 : var(--body-color)
@@ -169,10 +206,16 @@ img {
 }
 
 /*==== 2. home Style ====*/
+.home {
+  padding: 13rem 0 5rem;
+}
+
 .home .home-contents {
   display: flex;
+  position: relative;
 }
-.home .home-contents > div {
+
+.home .home-contents > .home-box {
   width: 50%;
   display: flex;
   justify-content: center;
@@ -190,28 +233,162 @@ img {
 .home-txt {
 }
 
-.home-txt .home-title {
-  font-size: var(--big-font-size);
+.home .home-contents .home-title {
+  font-size: 3.5rem;
+  font-weight: var(--font-semi-bold);
+  color: var(--title-color);
+  line-height: 4.5rem;
+  margin-bottom: 1.563rem;
+}
+
+.home .home-contents .home-desc {
+  color: var(--text-color);
+}
+
+.home .home-contents .home-social {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%); /*자신의 높이의 절반*/
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 6rem;
+}
+
+.home .home-social .home-social-txt {
+  transform: rotate(90deg);
+  display: flex;
+  position: relative;
+  align-items: center;
+  font-weight: var(--font-medium);
+  color: var(--first-color);
+  font-size: var(--small-font-size);
+}
+
+.home .home-social .home-social-txt::after {
+  position: absolute;
+  content: "";
+  width: 50%;
+  height: 2px;
+  background-color: var(--first-color);
+  left: 5rem;
+}
+.home .home-social .home-social-links {
+  display: flex;
+  flex-direction: column;
+}
+
+.home .home-social .home-social-link {
+  color: var(--first-color);
+  font-size: 1.15rem;
+}
+
+/*====About Section Style====*/
+
+.about-contents {
+  display: flex;
+  column-gap: 7rem;
+}
+
+.about-contents > .about-box {
+  width: 50%;
+}
+
+.about-contents .about-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.about-contents .about-img img {
+  width: 380px;
+}
+
+.about-contents .about-txt {
+  flex-direction: column;
+}
+
+.about-contents .about-txt .txt-title {
+  font-size: var(--h1-font-size);
   font-weight: var(--font-semi-bold);
   color: var(--title-color);
 }
 
-.home-txt .home-desc {
-  color: var(--text-color);
+.about-contents .about-txt .txt-desc {
+  margin: 1.563rem 0;
 }
 
-.home-txt .button {
+.about-contents .about-txt li {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  font-size: var(--small-font-size);
+  column-gap: 0.5rem;
+}
+
+.about-contents .about-txt ul i {
+  color: var(--first-color);
+}
+.about-contents .about-txt .button {
+  background: none;
+  color: var(--first-color);
+  padding: 0.75rem 1.563rem 0.75rem 0;
+  font-weight: var(--font-medium);
+}
+
+/*===== step section style ======*/
+.step .step-contents {
+  width: 100%;
   background-color: var(--first-color);
+  border-radius: 1rem;
+  padding: 3.5rem 2.5rem;
+}
+
+.step .step-contents .title-center {
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  font-size: var(--h1-font-size);
+  font-weight: var(--font-semi-bold);
+  margin-bottom: 3.5rem;
+}
+
+.step .step-contents .box-wrap {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0.5rem;
+}
+.step .step-contents .box-wrap .box {
+  background-color: #fff;
+  width: 30%;
+  padding: 3rem 2rem;
+  border-radius: 1rem;
+}
+.step .step-contents .box-wrap .box .box-number {
+  width: fit-content;
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  background: var(--first-color);
+  font-weight: var(--font-medium);
+  font-size: var(--h2-font-size);
   color: #fff;
 }
-
+.step .step-contents .box-wrap .box .box-title {
+  margin: 1.125rem 0;
+  font-weight: bold;
+}
+.step .step-contents .box-wrap .box .desc {
+  font-size: var(--small-font-size);
+}
 /*======== Media Query Style ========*/
 
 /*=========Memo=========*/
 /* 1.박스, 텍스트 그림자 효과 */
 /* 박스와 글자에 그림자 효과를 표현한다. 첫번째 값은 x축, 두번째 값은 y축. 세번째 값은 번짐, 네번째 값은 그림자 색을 나타낸다. */
 
-/* 메인타이틀 : var(--big-font-size), var(--font-semi-bold), color: var(--tltle-color)
+/* 메인타이틀 : 3.5rem var(--big-font-size), var(--font-semi-bold), color: var(--tltle-color)
 작은 글씨 설명 : color: var(--text-color)
 버튼 : var(--font-medium)
 사진 넓이 : 350px */
+
+/* 큰글씨 : var(--h1-font-size), var(--font-semi-bold), var(--title-color); */
