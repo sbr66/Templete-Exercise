@@ -140,6 +140,7 @@ footer {
 네비게이션 글자 크기 : var(--normal-font-size) */
 
 /*======== Main Style ========*/
+
 .header {
   _box-shadow: 0 5px 10px #efefef;
   background: #fff;
@@ -517,6 +518,7 @@ footer {
   font-size: 1.25em;
   color: var(--title-color);
   margin-right: 0.5rem;
+  transition: all 0.3s;
 }
 .question .question-header h3 {
   font-size: var(--small-font-size);
@@ -526,9 +528,12 @@ footer {
 
 .question .question-answer {
   width: 100%;
-  padding: 1rem;
+  padding: 0 1rem;
   font-size: var(--small-font-size);
-  display: none;
+  _display: none;
+  height: 0;
+  overflow: hidden;
+  transition: all 0.3s;
 }
 
 .question .question-box.active {
@@ -541,6 +546,14 @@ footer {
   color: #fff;
 }
 
+.question .question-box.active .question-header i {
+  transform: rotate(135deg);
+}
+.question .question-box.active .question-answer {
+  _display: block;
+  height: auto;
+  padding: 1rem;
+}
 /*=========Contact Style=========*/
 .contact .contact-content {
   display: flex;
