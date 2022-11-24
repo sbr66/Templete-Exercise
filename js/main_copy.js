@@ -1,3 +1,10 @@
+// 1. Sticky Header : 스크롤 시 헤더가 따라다니는 기능 //
+// 2. Header Menu Toggle //
+// 3. Navigation menu Design : 해당 섹션에 네비게이션 활성화 및 디자인 변경 //
+// 4. Question Section Accordion//
+// 5. Reveal Effect///
+// 6. Mobile Navigation Design
+
 /*=========Header sticky==========*/
 const stickyHeader = () => {
   const header = document.querySelector(".header");
@@ -17,9 +24,9 @@ const headerHeight = document.querySelector(".header").offsetHeight;
 const ActivateNavMenu = () => {
   const scrY = window.scrollY;
   sections.forEach((section) => {
-    const secHeight = section.offsetHeight;
-    const secTop = section.offsetTop - headerHeight;
-    const secId = section.getAttribute("id");
+    const secHeight = section.offsetHeight; // section 요소의 높이 값
+    const secTop = section.offsetTop - headerHeight; // section 요소의 윗쪽 옵셋 값 - 헤더의 높이
+    const secId = section.getAttribute("id"); // 각 섹션의 아이디값 저장
 
     if (scrY > secTop && scrY <= secTop + secHeight) {
       document.querySelector(`.nav-${secId}`).classList.add("active");
@@ -31,6 +38,7 @@ const ActivateNavMenu = () => {
     document.querySelector(".nav-home").classList.add("active");
   }
 };
+
 /*===================*/
 
 window.addEventListener("scroll", () => {
@@ -65,18 +73,45 @@ const hideMenu = () => {
 
 const toggleMenu = (event) => {
   event.preventDefault();
+  // console.log(this); //화살표 함수는 this에  window를 호출한다.
+  // console.log(event.target);
+  //console.log(target);
   const target = event.currentTarget;
-
+  //console.log(target.childNodes);
+  //console.log(target.children);
   target.classList.toggle("close");
   if (target.classList.contains("close")) {
+    //target.firstElementChild.setAttribute("class", "ri-close-line");
+    // target.children[0].setAttribute("class", "ri-close-line");
+    // mobileMenu.classList.add("show");
+    // body.style.overflow = "hidden";
+
+    // if (scrY === 0) {
+    //   header.style.boxShadow = "0 2px 2px #efefef";
+    // }
     showMenu();
   } else {
+    //console.log(false);
+    //target.firstElementChild.setAttribute("class", "ri-menu-line");
+    // target.children[0].setAttribute("class", "ri-menu-line");
+    // mobileMenu.classList.remove("show");
+    // body.style.overflow = "auto";
+    // if (scrY === 0) {
+    //   header.setAttribute("style", "");
+    // }
     hideMenu();
   }
 };
 
 body.addEventListener("click", (e) => {
+  //console.log(e.target);
   if (!header.contains(e.target)) {
+    //   menu.children[0].setAttribute("class", "ri-menu-line");
+    //   mobileMenu.classList.remove("show");
+    //   body.style.overflow = "auto";
+    //   if (scrY === 0) {
+    //   header.setAttribute("style", "");
+    // }
     hideMenu();
   }
 });
@@ -89,12 +124,14 @@ const accHeaders = document.querySelectorAll(".question-box");
 const qAnswers = document.querySelectorAll(".question-answer");
 
 const activateAccordion = (e) => {
+  //console.log(e.currentTarget);
   const $this = e.currentTarget;
   $this.classList.toggle("active");
 };
 accHeaders.forEach((header) => {
   header.addEventListener("click", activateAccordion);
 });
+
 /*===================*/
 
 /*=========Element Fade Up Effect(reveal)==========*/
@@ -108,4 +145,6 @@ sr.reveal(".home-box");
 sr.reveal(".about-box");
 sr.reveal(".box", { interval: 200 });
 sr.reveal(".item", { interval: 200 });
+
+//sr.reveal(".home-box", { duration: 1000, origin: "bottom", distance: "50px" });
 /*===================*/
